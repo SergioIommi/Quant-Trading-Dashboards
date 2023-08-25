@@ -3,6 +3,13 @@
 ## Video Demonstration
 - https://www.youtube.com/watch?v=nKMXSsmpTvA
 
+## Screenshots
+### Equities Pair Trading/Statistical Arbitrage
+![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_app1.png?raw=true)
+
+### Multi-Variable Index Regression
+![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_app2.png?raw=true)
+
 ## Setup/Install
 - For the 2 apps I use MongoDB and Python (with few libraries) so before being able to run the apps in a Jupyter Notebook or as Python scripts, directly from the terminal to open them in a browser, we need to install and configure both.
 - The development and testing for the apps and the database backend have been done under Linux (Ubuntu 22.04.2 LTS) so this guide and steps are the ones I’ve run on such OS, but hopefully they will work on other OS with no/minor adjustments.
