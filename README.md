@@ -2,6 +2,7 @@
        
 ## Video Demonstration
 - https://www.youtube.com/watch?v=nKMXSsmpTvA
+[![IMAGE ALT TEXT HERE](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/youtube.png)](https://www.youtube.com/watch?v=nKMXSsmpTvA)
 
 ## Screenshots
 ### Equities Pair Trading/Statistical Arbitrage
