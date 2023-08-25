@@ -1,4 +1,4 @@
-name: py38_bluecrest2
+name: py38_env
 channels:
   - defaults
   - conda-forge
@@ -114,4 +114,4 @@ dependencies:
       - werkzeug==2.2.3
       - xgboost==1.7.6
       - yfinance==0.2.27
-prefix: /home/sergio/anaconda3/envs/py38_bluecrest2
+prefix: /home/sergio/anaconda3/envs/py38_env
