@@ -73,42 +73,43 @@ In particular:
 - Once MongoDB is installed an the conda enviroment `py38_bluecrest` created, we can build the database and run the applications
 
 ### Database Creation
-    1. We can create the database with either, the Jupyter Notebook `bluecrest.ipynb` or the `db_run.py` script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder `/symbols` as well as the database `stock_db` and collection `daily` in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
+1. We can create the database with either, the Jupyter Notebook `bluecrest.ipynb` or the `db_run.py` script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder `/symbols` as well as the database `stock_db` and collection `daily` in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
 ![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_db.png?raw=true)
-    2. Jupyter Notebook
-        1. change kernel to py38_bluecrest
-        2. to create the database we can run the code in the cell below the one with title `Create/Update Database (MongoDB)` by first changing some relevant parameters (e.g., start date for the data to get from Yahoo Finance)
-    3. Python Script (from terminal)
-        1. Another possibility is to run the script db_run.py  from terminal
-        2. conda activate py38_bluecrest
-        3. python db_run.py
+2. Jupyter Notebook
+    1. change kernel to py38_bluecrest
+    2. to create the database we can run the code in the cell below the one with title `Create/Update Database (MongoDB)` by first changing some relevant parameters (e.g., start date for the data to get from Yahoo Finance)
+3. Python Script (from terminal)
+    1. Another possibility is to run the script db_run.py  from terminal
+    2. conda activate py38_bluecrest
+    3. python db_run.py
+
 ### Database Update
-    1. To update the database with the most recent data on Yahoo Finance we can simply re-run the code
-    2. Another possibility is to setup an automatic process to do that, as an example by using a cron job to run daily or even use celery (https://github.com/celery/celery). I have skipped this step.
+1. To update the database with the most recent data on Yahoo Finance we can simply re-run the code
+2. Another possibility is to setup an automatic process to do that, as an example by using a cron job to run daily or even use celery (https://github.com/celery/celery). I have skipped this step.
+
 ### Running of the Apps
-    1. Jupyter Notebook
-        1. Shut down Dash server on 127.0.0.1:8050 (e.g., shut down other kernels using Dash)
-        2. change kernel to py38_bluecrest
-        3. The 2 apps are stored under the cells:
-            1. Project-1: Equities Pairs Trading
-            2. Project-2: Multi-Variate Index Regression
-        4. Once the code is executed the interactive GUI (built with Dash) should appear right below the executed cell
-        5. The following is how the 1st application (equities pair-trading) should appear
-
-
-    2. Python Script (from terminal, to open the WebApp in a browser)
-        1. Another possibility is to run the script app1.py (and app2.py) from terminal.
-        2. Shut down Dash server on 127.0.0.1:8050 (e.g., shut down other kernels using Dash)
-        3. from terminal move in the folder containing app1.py/app2.py python scripts
-            - e.g., cd /home/sergio/work/misc/bluecrest_2023-07/code/
-        4. conda activate py38_bluecrest
-        5. python app1.py (or python app2.py)
-            1. press CTRL on keyboard and click on link shown on terminal (e.g., http://127.0.0.1:8050)
-            2. if the browser doesn’t open automatically and goes to that page, open a new browser instance and go to address http://127.0.0.1:8050
-                1. the Dash server should start on the default port 8050, if that port is already used by another process (e.g., Jupyter Notebook that started already the Dash Server), please close such process (e.g., shut down the kernel of the Jupyter Notebook that is running the Dash server) and try to re-run the command in terminal
-            3. test the WebApp by using the interactive interface
-            4. Make sure to close the app and Dash server with CTRL+C on the terminal before running a different app (e.g., run app2.py after app1.py)
-            5. The apps should look like the following if run in the browser:
+1. Jupyter Notebook
+    1. Shut down Dash server on 127.0.0.1:8050 (e.g., shut down other kernels using Dash)
+    2. change kernel to py38_bluecrest
+    3. The 2 apps are stored under the cells:
+        1. Project-1: Equities Pairs Trading
+        2. Project-2: Multi-Variate Index Regression
+    4. Once the code is executed the interactive GUI (built with Dash) should appear right below the executed cell
+2. Python Script (from terminal, to open the WebApp in a browser)
+    1. Another possibility is to run the script app1.py (and app2.py) from terminal.
+    2. Shut down Dash server on 127.0.0.1:8050 (e.g., shut down other kernels using Dash)
+    3. from terminal move in the folder containing app1.py/app2.py python scripts
+        - e.g., cd /home/sergio/work/misc/bluecrest_2023-07/code/
+    4. conda activate py38_bluecrest
+    5. python app1.py (or python app2.py)
+        1. press CTRL on keyboard and click on link shown on terminal (e.g., http://127.0.0.1:8050)
+        2. if the browser doesn’t open automatically and goes to that page, open a new browser instance and go to address http://127.0.0.1:8050
+            1. the Dash server should start on the default port 8050, if that port is already used by another process (e.g., Jupyter Notebook that started already the Dash Server), please close such process (e.g., shut down the kernel of the Jupyter Notebook that is running the Dash server) and try to re-run the command in terminal
+        3. test the WebApp by using the interactive interface
+        4. Make sure to close the app and Dash server with CTRL+C on the terminal before running a different app (e.g., run app2.py after app1.py)
+        5. The apps should look like the following if run in the browser:
+![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_app1.png?raw=true)
+![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_app2.png?raw=true)
 
 ## Note on the Stock Symbols
 The list of stocks included in each stock index aren’t always the same but in developing the database backend and the 2 apps I assumed a fixed list.
