@@ -1,4 +1,4 @@
-# Programming Assessment - Equities Pair Trading/Statistical Arbitrage and Multi-Variable Index Regression
+# Programming Assessment \n Equities Pair Trading/Statistical Arbitrage and Multi-Variable Index Regression
        
 ## Video Demonstration
 - https://www.youtube.com/watch?v=nKMXSsmpTvA
@@ -9,41 +9,41 @@
 
 ### Install MongoDB (locally) - MongoDB Community Edition
 - I assume to run MongoDB locally with the Community Edition (no cloud) and with the database backtend developed as a synchronous Python application (I use PyMongo, the official MongoDB driver for synchronous Python applications).
-       - In case we need to run the database backend on the cloud we could use MongoDB Atlas or other cloud services like Amazon AWS, etc.
-       - In case we want to develop the database as an asynchronous Python application, we could use the `motor` official async driver for MongoDB:
-              - https://www.mongodb.com/docs/drivers/motor/
-       - The following commands and notes are for Ubuntu 22.04 and are based on:
-              - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
-       - For other OS please check the page:
-              - https://www.mongodb.com/docs/manual/administration/install-community/
-       - Steps:
-              1. `sudo apt-get install gnupg curl`
-              2. `curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor`
-              3. Create a list file for MongoDB, i.e., file on local machine where the APT package manager looks for online sources of MongoDB to download and install.
-                     - Ubuntu 22.04 (Jammy):
-                            - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#create-a-list-file-for-mongodb
-                            - `echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list`
-              4. Install the latest stable version
-                     - in case of problems:
-                            - https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#std-label-install-ubuntu-troubleshooting
-                     - `sudo apt update`
-                     - `sudo apt-get install -y mongodb-org`
-              5. Start running the MongoDB Community Edition process
-                     - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#run-mongodb-community-edition
-                     - check init system used by OS
-                            - `ps --no-headers -o comm 1`
-                     - `sudo systemctl daemon-reload`
-                     - `sudo systemctl start mongod`
-              6. Verify that MongoDB has started successfully
-                       - `sudo systemctl status mongod`
-              7. type `q` to exit the status log on terminal
-              8. (optional) ensure mongodb service auto-start on system reboot
-                     - `sudo systemctl enable mongod`
-              9. (optional) stop mongodb service once the application is no longer needed
-                     - `sudo systemctl stop mongod`
-              10. (optional) check warnings and if default port is 27017
-                     - `mongosh`
-                     - exit by typying `quit`
+    - In case we need to run the database backend on the cloud we could use MongoDB Atlas or other cloud services like Amazon AWS, etc.
+    - In case we want to develop the database as an asynchronous Python application, we could use the `motor` official async driver for MongoDB:
+        - https://www.mongodb.com/docs/drivers/motor/
+    - The following commands and notes are for Ubuntu 22.04 and are based on:
+        - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+    - For other OS please check the page:
+        - https://www.mongodb.com/docs/manual/administration/install-community/
+    - Steps:
+        1. `sudo apt-get install gnupg curl`
+        2. `curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor`
+        3. Create a list file for MongoDB, i.e., file on local machine where the APT package manager looks for online sources of MongoDB to download and install.
+            - Ubuntu 22.04 (Jammy):
+                - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#create-a-list-file-for-mongodb
+            - `echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list`
+        4. Install the latest stable version
+            - in case of problems:
+                - https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#std-label-install-ubuntu-troubleshooting
+            - `sudo apt update`
+            - `sudo apt-get install -y mongodb-org`
+        5. Start running the MongoDB Community Edition process
+            - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#run-mongodb-community-edition
+            - check init system used by OS
+                - `ps --no-headers -o comm 1`
+            - `sudo systemctl daemon-reload`
+            - `sudo systemctl start mongod`
+        6. Verify that MongoDB has started successfully
+            - `sudo systemctl status mongod`
+        7. type `q` to exit the status log on terminal
+        8. (optional) ensure mongodb service auto-start on system reboot
+            - `sudo systemctl enable mongod`
+        9. (optional) stop mongodb service once the application is no longer needed
+            - `sudo systemctl stop mongod`
+        10. (optional) check warnings and if default port is 27017
+            - `mongosh`
+            - exit by typying `quit`
 
 ### Install MongoDB Compass (GUI for database)
 - This is not needed but it is useful to observe the database content from a GUI
@@ -56,7 +56,7 @@
     - conda env create --name py38_bluecrest --file environment.yml
 
 ## Jupyter Notebooks, Python Scripts and Folder Structure
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+
 - The following is the structure of the project folder with the required files to run the apps.
 In particular:
     - `typography.css` is a css file that contains some formatting for the Dash components of the 2 apps
@@ -70,13 +70,13 @@ In particular:
         - `index_symbols_bool.csv` is instead a file that is automatically created at the time of creation of the database and it stores all the stock symbols and a column for each stock index to mark the inclusion of each single stock symbol to one or more stock indices (this information is also stored in the database to avoid storing duplicate data if a stock is part of multiple indices)
         - regarding the stock symbols I’ve written a note at the end of this readme document to give details about how I collected the various symbols
 
-## How to Create the Database and Run the 2 Apps
+    How to Create the Database and Run the 2 Apps
     1. Once MongoDB is installed an the conda enviroment py38_bluecrest created, we can build the database and run the applications
     2. Database Creation
         1. We can create the database with either, the Jupyter Notebook bluecrest.ipynb or the db_run.py script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder /projects/symbols as well as the database `stock_db` and collection `daily`  in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
         2. Jupyter Notebook
             1. change kernel to py38_bluecrest
-            2. to create the database we can run the code in the cell below the one with title `Create/Update Database (MongoDB)’ by first changing some relevant parameters (e.g., start date for the data to get from Yahoo Finance)
+            2. to create the database we can run the code in the cell below the one with title `Create/Update Database (MongoDB)` by first changing some relevant parameters (e.g., start date for the data to get from Yahoo Finance)
         3. Python Script (from terminal)
             1. Another possibility is to run the script db_run.py  from terminal
             2. conda activate py38_bluecrest
@@ -113,7 +113,7 @@ In particular:
 The list of stocks included in each stock index aren’t always the same but in developing the database backend and the 2 apps I assumed a fixed list.
 In particular for the S&P 500 and the Nasdaq 100 stock indices I used Wikipedia to get the list of stocks. For the Russell 2000 stock index instead I haven’t found a reliable source for the list of stocks so I opted to get the list of symbols by looking at the iShares Russell 2000 ETF (IWM).
 
-Here are all the details for the 3 stock indices:
+## Here are all the details for the 3 stock indices:
 - Nasdaq-100
     - Wikipedia
         - https://en.wikipedia.org/wiki/Nasdaq-100
