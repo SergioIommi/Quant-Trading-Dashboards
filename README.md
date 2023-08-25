@@ -28,33 +28,33 @@
 - For other OS please check the page:
     - https://www.mongodb.com/docs/manual/administration/install-community/
 #### Steps:
-    1. `sudo apt-get install gnupg curl`
-    2. `curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor`
-    3. Create a list file for MongoDB, i.e., file on local machine where the APT package manager looks for online sources of MongoDB to download and install.
-        - Ubuntu 22.04 (Jammy):
-            - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#create-a-list-file-for-mongodb
-        - `echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list`
-    4. Install the latest stable version
-        - in case of problems:
-            - https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#std-label-install-ubuntu-troubleshooting
-        - `sudo apt update`
-        - `sudo apt-get install -y mongodb-org`
-    5. Start running the MongoDB Community Edition process
-        - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#run-mongodb-community-edition
-        - check `init` system used by OS
-            - `ps --no-headers -o comm 1`
-        - `sudo systemctl daemon-reload`
-        - `sudo systemctl start mongod`
-    6. Verify that MongoDB has started successfully
-        - `sudo systemctl status mongod`
-    7. type `q` to exit the status log on terminal
-    8. (optional) ensure mongodb service auto-start on system reboot
-        - `sudo systemctl enable mongod`
-    9. (optional) stop mongodb service once the application is no longer needed
-        - `sudo systemctl stop mongod`
-    10. (optional) check warnings and if default port is `27017`
-        - `mongosh`
-        - exit by typying `quit`
+1. `sudo apt-get install gnupg curl`
+2. `curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor`
+3. Create a list file for MongoDB, i.e., file on local machine where the APT package manager looks for online sources of MongoDB to download and install.
+    - Ubuntu 22.04 (Jammy):
+        - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#create-a-list-file-for-mongodb
+    - `echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list`
+4. Install the latest stable version
+    - in case of problems:
+        - https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#std-label-install-ubuntu-troubleshooting
+    - `sudo apt update`
+    - `sudo apt-get install -y mongodb-org`
+5. Start running the MongoDB Community Edition process
+    - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#run-mongodb-community-edition
+    - check `init` system used by OS
+        - `ps --no-headers -o comm 1`
+    - `sudo systemctl daemon-reload`
+    - `sudo systemctl start mongod`
+6. Verify that MongoDB has started successfully
+    - `sudo systemctl status mongod`
+7. type `q` to exit the status log on terminal
+8. (optional) ensure mongodb service auto-start on system reboot
+    - `sudo systemctl enable mongod`
+9. (optional) stop mongodb service once the application is no longer needed
+    - `sudo systemctl stop mongod`
+10. (optional) check warnings and if default port is `27017`
+    - `mongosh`
+    - exit by typying `quit`
 
 ### Install MongoDB Compass (GUI for database)
 This is not needed but it is useful to observe the database content from a GUI.
