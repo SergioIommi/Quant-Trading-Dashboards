@@ -87,16 +87,16 @@ Once MongoDB is installed an the conda enviroment `py38_bluecrest` created, we c
 We can create the database with either, the Jupyter Notebook `bluecrest.ipynb` or the `db_run.py` script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder `/symbols` as well as the database `stock_db` and collection `daily` in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
 ![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_db.png?raw=true)
 #### Create Database with Jupyter Notebook
-1. change kernel to py38_bluecrest
+1. change kernel to `py38_bluecrest`
 2. to create the database we can run the code in the cell below the one with title `Create/Update Database (MongoDB)` by first changing some relevant parameters (e.g., start date for the data to get from Yahoo Finance)
 #### Create Database with Python Script (from terminal)
-1. Another possibility is to run the script db_run.py  from terminal
-2. conda activate py38_bluecrest
-3. python db_run.py
+1. Another possibility is to run the script `db_run.py`  from terminal
+2. `conda activate py38_bluecrest`
+3. `python db_run.py`
 
 ### Database Update
 1. To update the database with the most recent data on Yahoo Finance we can simply re-run the code
-2. Another possibility is to setup an automatic process to do that, as an example by using a cron job to run daily or even use celery (https://github.com/celery/celery). I have skipped this step.
+2. Another possibility is to setup an automatic process to do that, as an example by using a `cron job` to run daily or even use `celery` (https://github.com/celery/celery). I have skipped this step.
 
 ### Running of the Apps
 We can run the apps with either, the Jupyter Notebook `bluecrest.ipynb` or the `app1.py`/`app2.py` Python scripts.
@@ -170,4 +170,3 @@ In particular for the S&P 500 and the Nasdaq 100 stock indices I used Wikipedia 
     - PDL BioPharma, Inc. (stock present in iShares Russell 2000 ETF; delisted on 31-Dec-2020)
 - XTSLA
     - BCF Treasury Fund (fund/not stock present in iShares Russell 2000 ETF)
-
