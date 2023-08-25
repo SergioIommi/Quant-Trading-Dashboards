@@ -1,4 +1,4 @@
-# Programming Assessment <br/> Equities Pair Trading/Statistical Arbitrage and Multi-Variable Index Regression
+# Equities Pair Trading/Statistical Arbitrage and Multi-Variable Index Regression
        
 ## Video Demonstration
 - https://www.youtube.com/watch?v=nKMXSsmpTvA
@@ -64,14 +64,14 @@ Please check the following address on how to install the MongoDB GUI: https://ww
 - For Python I assume that Anaconda is already installed on the target machine, otherwise this needs to be done beforehand. Please check the  following page in that regard:
     - https://docs.anaconda.com/free/anaconda/install/index.html
 - To run the apps, a new conda environment is required, and this can be built using the `environment.yml` file provided and executing the following command from terminal
-    - `conda env create --name py38_bluecrest --file environment.yml`
+    - `conda env create --name py38_env --file environment.yml`
 
 ## Jupyter Notebooks, Python Scripts and Folder Structure
 The following is the structure of the project folder with the required files to run the apps.
 In particular:
 - `typography.css` is a css file that contains some formatting for the Dash components of the 2 apps
-- the folder `assets` and the file `typography.css` must be kept in this position relative to the other files (notebook `bluecrest.ipynb` and python scripts `app1.py` and `app2.py`)
-- notebook `bluecrest.ipynb` contains the same python code that is split into the 3 python scripts `app1.py`, `app2.py` and `db_run.py` so that the apps can be run either, via the Jupyter Notebook or the *.py scripts via terminal
+- the folder `assets` and the file `typography.css` must be kept in this position relative to the other files (notebook `notebook.ipynb` and python scripts `app1.py` and `app2.py`)
+- notebook `notebook.ipynb` contains the same python code that is split into the 3 python scripts `app1.py`, `app2.py` and `db_run.py` so that the apps can be run either, via the Jupyter Notebook or the *.py scripts via terminal
 - `environment.yml` is the yml file required to create the conda environment
 - the folder `symbols` contains 4 CSV files:
     - `GSCP.csv` contains the stock symbols for the S&P 500 Stock Index and the related stocks
@@ -81,17 +81,17 @@ In particular:
     - regarding the stock symbols I’ve written a note at the end of this readme document to give details about how I collected the various symbols
 
 ## How to Create the Database and Run the 2 Apps
-Once MongoDB is installed an the conda enviroment `py38_bluecrest` created, we can build the database and run the applications
+Once MongoDB is installed an the conda enviroment `py38_env` created, we can build the database and run the applications
 
 ### Database Creation
-We can create the database with either, the Jupyter Notebook `bluecrest.ipynb` or the `db_run.py` script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder `/symbols` as well as the database `stock_db` and collection `daily` in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
+We can create the database with either, the Jupyter Notebook `notebook.ipynb` or the `db_run.py` script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder `/symbols` as well as the database `stock_db` and collection `daily` in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
 ![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_db.png?raw=true)
 #### Create Database with Jupyter Notebook
-1. change kernel to `py38_bluecrest`
+1. change kernel to `py38_env`
 2. to create the database we can run the code in the cell below the one with title `Create/Update Database (MongoDB)` by first changing some relevant parameters (e.g., start date for the data to get from Yahoo Finance)
 #### Create Database with Python Script (from terminal)
 1. Another possibility is to run the script `db_run.py`  from terminal
-2. `conda activate py38_bluecrest`
+2. `conda activate py38_env`
 3. `python db_run.py`
 
 ### Database Update
@@ -99,11 +99,11 @@ We can create the database with either, the Jupyter Notebook `bluecrest.ipynb` o
 2. Another possibility is to setup an automatic process to do that, as an example by using a `cron job` to run daily or even use `celery` (https://github.com/celery/celery). I have skipped this step.
 
 ### Running of the Apps
-We can run the apps with either, the Jupyter Notebook `bluecrest.ipynb` or the `app1.py`/`app2.py` Python scripts.
+We can run the apps with either, the Jupyter Notebook `notebook.ipynb` or the `app1.py`/`app2.py` Python scripts.
 
 #### Run Apps with Jupyter Notebook
 1. Shut down Dash server on `127.0.0.1:8050` (e.g., shut down other kernels using Dash)
-2. change kernel to `py38_bluecrest`
+2. change kernel to `py38_env`
 3. The 2 apps are stored under the cells:
     1. Project-1: Equities Pairs Trading
     2. Project-2: Multi-Variate Index Regression
@@ -113,8 +113,8 @@ We can run the apps with either, the Jupyter Notebook `bluecrest.ipynb` or the `
 1. Another possibility is to run the script `app1.py` (and `app2.py`) from terminal.
 2. Shut down Dash server on `127.0.0.1:8050` (e.g., shut down other kernels using Dash)
 3. from terminal move in the folder containing `app1.py`/`app2.py` python scripts
-    - e.g., `cd /home/sergio/work/misc/bluecrest_2023-07/code/`
-4. `conda activate py38_bluecrest`
+    - e.g., `cd /home/sergio/work/misc/project/code/`
+4. `conda activate py38_env`
 5. `python app1.py` (or `python app2.py`)
     1. press CTRL on keyboard and click on link shown on terminal (e.g., http://127.0.0.1:8050)
     2. if the browser doesn’t open automatically and goes to that page, open a new browser instance and go to address http://127.0.0.1:8050
