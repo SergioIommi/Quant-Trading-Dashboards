@@ -11,6 +11,9 @@
 ### Multi-Variable Index Regression
 ![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_app2.png?raw=true)
 
+### Database (MongoDB) GUI
+![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_db.png?raw=true)
+
 ## Setup/Install
 - For the 2 apps I use MongoDB and Python (with few libraries) so before being able to run the apps in a Jupyter Notebook or as Python scripts, directly from the terminal to open them in a browser, we need to install and configure both.
 - The development and testing for the apps and the database backend have been done under Linux (Ubuntu 22.04.2 LTS) so this guide and steps are the ones I’ve run on such OS, but hopefully they will work on other OS with no/minor adjustments.
@@ -97,24 +100,24 @@ In particular:
 
 ### Running of the Apps
 1. Jupyter Notebook
-    1. Shut down Dash server on 127.0.0.1:8050 (e.g., shut down other kernels using Dash)
-    2. change kernel to py38_bluecrest
+    1. Shut down Dash server on `127.0.0.1:8050` (e.g., shut down other kernels using Dash)
+    2. change kernel to `py38_bluecrest`
     3. The 2 apps are stored under the cells:
         1. Project-1: Equities Pairs Trading
         2. Project-2: Multi-Variate Index Regression
     4. Once the code is executed the interactive GUI (built with Dash) should appear right below the executed cell
 2. Python Script (from terminal, to open the WebApp in a browser)
-    1. Another possibility is to run the script app1.py (and app2.py) from terminal.
-    2. Shut down Dash server on 127.0.0.1:8050 (e.g., shut down other kernels using Dash)
-    3. from terminal move in the folder containing app1.py/app2.py python scripts
-        - e.g., cd /home/sergio/work/misc/bluecrest_2023-07/code/
-    4. conda activate py38_bluecrest
-    5. python app1.py (or python app2.py)
+    1. Another possibility is to run the script `app1.py` (and `app2.py`) from terminal.
+    2. Shut down Dash server on `127.0.0.1:8050` (e.g., shut down other kernels using Dash)
+    3. from terminal move in the folder containing `app1.py`/`app2.py` python scripts
+        - e.g., `cd /home/sergio/work/misc/bluecrest_2023-07/code/`
+    4. `conda activate py38_bluecrest`
+    5. `python app1.py` (or `python app2.py`)
         1. press CTRL on keyboard and click on link shown on terminal (e.g., http://127.0.0.1:8050)
         2. if the browser doesn’t open automatically and goes to that page, open a new browser instance and go to address http://127.0.0.1:8050
-            1. the Dash server should start on the default port 8050, if that port is already used by another process (e.g., Jupyter Notebook that started already the Dash Server), please close such process (e.g., shut down the kernel of the Jupyter Notebook that is running the Dash server) and try to re-run the command in terminal
+            1. the Dash server should start on the default port `8050`, if that port is already used by another process (e.g., Jupyter Notebook that started already the Dash Server), please close such process (e.g., shut down the kernel of the Jupyter Notebook that is running the Dash server) and try to re-run the command in terminal
         3. test the WebApp by using the interactive interface
-        4. Make sure to close the app and Dash server with CTRL+C on the terminal before running a different app (e.g., run app2.py after app1.py)
+        4. Make sure to close the app and Dash server with CTRL+C on the terminal before running a different app (e.g., run `app2.py` after `app1.py`)
         5. The apps should look like the following if run in the browser:
 ![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_app1.png?raw=true)
 ![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_app2.png?raw=true)
@@ -123,7 +126,7 @@ In particular:
 The list of stocks included in each stock index aren’t always the same but in developing the database backend and the 2 apps I assumed a fixed list.
 In particular for the S&P 500 and the Nasdaq 100 stock indices I used Wikipedia to get the list of stocks. For the Russell 2000 stock index instead I haven’t found a reliable source for the list of stocks so I opted to get the list of symbols by looking at the iShares Russell 2000 ETF (IWM).
 
-## Here are all the details for the 3 stock indices:
+### Details on the 3 Stock Indices
 - Nasdaq-100
     - Wikipedia
         - https://en.wikipedia.org/wiki/Nasdaq-100
@@ -151,17 +154,17 @@ In particular for the S&P 500 and the Nasdaq 100 stock indices I used Wikipedia 
     - FTSERussell.com website
         - With the Google search “Russell 2000 Membership List site:ftserussell.com” I haven’t found an updated list of all the stocks/symbols but only old ones
 
-- Symbols removed from CSVs:
-    - ADRO
-        - Aduro Biotech (present in iShares Russell 2000 ETF; merger with Chinook Therapeutics announced on 02-Jun-2020)
-    - GTXI
-        - GTx, Inc. (present in iShares Russell 2000 ETF, Reverse Merger with Oncternal Therapeutics Completed on 10-Jun-2019)
-    - MSFUT
-        - CASH COLLATERAL MSFUT USD (fund/not stock present in iShares Russell 2000 ETF)
-    - P5N994
-        - Petrocorp Inc Escrow (stock present in iShares Russell 2000 ETF; Petrocorp Inc. changed name into Motomova Inc. in June 2023 but I haven’t been able to confirm if Motomova Inc. is still part of the Russell 2000 stock index)
-    - PDLI
-        - PDL BioPharma, Inc. (stock present in iShares Russell 2000 ETF; delisted on 31-Dec-2020)
-    - XTSLA
-        - BCF Treasury Fund (fund/not stock present in iShares Russell 2000 ETF)
+### Symbols removed from CSVs
+- ADRO
+    - Aduro Biotech (present in iShares Russell 2000 ETF; merger with Chinook Therapeutics announced on 02-Jun-2020)
+- GTXI
+    - GTx, Inc. (present in iShares Russell 2000 ETF, Reverse Merger with Oncternal Therapeutics Completed on 10-Jun-2019)
+- MSFUT
+    - CASH COLLATERAL MSFUT USD (fund/not stock present in iShares Russell 2000 ETF)
+- P5N994
+    - Petrocorp Inc Escrow (stock present in iShares Russell 2000 ETF; Petrocorp Inc. changed name into Motomova Inc. in June 2023 but I haven’t been able to confirm if Motomova Inc. is still part of the Russell 2000 stock index)
+- PDLI
+    - PDL BioPharma, Inc. (stock present in iShares Russell 2000 ETF; delisted on 31-Dec-2020)
+- XTSLA
+    - BCF Treasury Fund (fund/not stock present in iShares Russell 2000 ETF)
 
