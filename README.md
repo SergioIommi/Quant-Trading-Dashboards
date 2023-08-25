@@ -71,9 +71,10 @@ In particular:
 
 ## How to Create the Database and Run the 2 Apps
 - Once MongoDB is installed an the conda enviroment `py38_bluecrest` created, we can build the database and run the applications
+
 ### Database Creation
     1. We can create the database with either, the Jupyter Notebook `bluecrest.ipynb` or the `db_run.py` script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder `/symbols` as well as the database `stock_db` and collection `daily` in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
-    !(https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_db.png?raw=true)
+![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_db.png?raw=true)
     2. Jupyter Notebook
         1. change kernel to py38_bluecrest
         2. to create the database we can run the code in the cell below the one with title `Create/Update Database (MongoDB)` by first changing some relevant parameters (e.g., start date for the data to get from Yahoo Finance)
