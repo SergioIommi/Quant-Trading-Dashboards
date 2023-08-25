@@ -20,45 +20,45 @@
 
 ### Install MongoDB (locally) - MongoDB Community Edition
 - I assume to run MongoDB locally with the Community Edition (no cloud) and with the database backtend developed as a synchronous Python application (I use PyMongo, the official MongoDB driver for synchronous Python applications).
-    - In case we need to run the database backend on the cloud we could use MongoDB Atlas or other cloud services like Amazon AWS, etc.
-    - In case we want to develop the database as an asynchronous Python application, we could use the `motor` official async driver for MongoDB:
-        - https://www.mongodb.com/docs/drivers/motor/
-    - The following commands and notes are for Ubuntu 22.04 and are based on:
-        - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
-    - For other OS please check the page:
-        - https://www.mongodb.com/docs/manual/administration/install-community/
-    - Steps:
-        1. `sudo apt-get install gnupg curl`
-        2. `curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor`
-        3. Create a list file for MongoDB, i.e., file on local machine where the APT package manager looks for online sources of MongoDB to download and install.
-            - Ubuntu 22.04 (Jammy):
-                - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#create-a-list-file-for-mongodb
-            - `echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list`
-        4. Install the latest stable version
-            - in case of problems:
-                - https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#std-label-install-ubuntu-troubleshooting
-            - `sudo apt update`
-            - `sudo apt-get install -y mongodb-org`
-        5. Start running the MongoDB Community Edition process
-            - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#run-mongodb-community-edition
-            - check `init` system used by OS
-                - `ps --no-headers -o comm 1`
-            - `sudo systemctl daemon-reload`
-            - `sudo systemctl start mongod`
-        6. Verify that MongoDB has started successfully
-            - `sudo systemctl status mongod`
-        7. type `q` to exit the status log on terminal
-        8. (optional) ensure mongodb service auto-start on system reboot
-            - `sudo systemctl enable mongod`
-        9. (optional) stop mongodb service once the application is no longer needed
-            - `sudo systemctl stop mongod`
-        10. (optional) check warnings and if default port is `27017`
-            - `mongosh`
-            - exit by typying `quit`
+- In case we need to run the database backend on the cloud we could use MongoDB Atlas or other cloud services like Amazon AWS, etc.
+- In case we want to develop the database as an asynchronous Python application, we could use the `motor` official async driver for MongoDB:
+    - https://www.mongodb.com/docs/drivers/motor/
+- The following commands and notes are for Ubuntu 22.04 and are based on:
+    - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/
+- For other OS please check the page:
+    - https://www.mongodb.com/docs/manual/administration/install-community/
+#### Steps:
+    1. `sudo apt-get install gnupg curl`
+    2. `curl -fsSL https://pgp.mongodb.com/server-6.0.asc | sudo gpg -o /usr/share/keyrings/mongodb-server-6.0.gpg --dearmor`
+    3. Create a list file for MongoDB, i.e., file on local machine where the APT package manager looks for online sources of MongoDB to download and install.
+        - Ubuntu 22.04 (Jammy):
+            - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#create-a-list-file-for-mongodb
+        - `echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list`
+    4. Install the latest stable version
+        - in case of problems:
+            - https://www.mongodb.com/docs/manual/reference/installation-ubuntu-community-troubleshooting/#std-label-install-ubuntu-troubleshooting
+        - `sudo apt update`
+        - `sudo apt-get install -y mongodb-org`
+    5. Start running the MongoDB Community Edition process
+        - https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/#run-mongodb-community-edition
+        - check `init` system used by OS
+            - `ps --no-headers -o comm 1`
+        - `sudo systemctl daemon-reload`
+        - `sudo systemctl start mongod`
+    6. Verify that MongoDB has started successfully
+        - `sudo systemctl status mongod`
+    7. type `q` to exit the status log on terminal
+    8. (optional) ensure mongodb service auto-start on system reboot
+        - `sudo systemctl enable mongod`
+    9. (optional) stop mongodb service once the application is no longer needed
+        - `sudo systemctl stop mongod`
+    10. (optional) check warnings and if default port is `27017`
+        - `mongosh`
+        - exit by typying `quit`
 
 ### Install MongoDB Compass (GUI for database)
-- This is not needed but it is useful to observe the database content from a GUI
-- https://www.mongodb.com/dos/compass/master/install/ 
+This is not needed but it is useful to observe the database content from a GUI.
+Please check the following address on how to install the MongoDB GUI: https://www.mongodb.com/dos/compass/master/install/
 
 ### Python Setup
 - For Python I assume that Anaconda is already installed on the target machine, otherwise this needs to be done beforehand. Please check the  following page in that regard:
@@ -67,29 +67,29 @@
     - `conda env create --name py38_bluecrest --file environment.yml`
 
 ## Jupyter Notebooks, Python Scripts and Folder Structure
-- The following is the structure of the project folder with the required files to run the apps.
+The following is the structure of the project folder with the required files to run the apps.
 In particular:
-    - `typography.css` is a css file that contains some formatting for the Dash components of the 2 apps
-    - the folder `assets` and the file `typography.css` must be kept in this position relative to the other files (notebook `bluecrest.ipynb` and python scripts `app1.py` and `app2.py`)
-    - notebook `bluecrest.ipynb` contains the same python code that is split into the 3 python scripts `app1.py`, `app2.py` and `db_run.py` so that the apps can be run either, via the Jupyter Notebook or the *.py scripts via terminal
-    - `environment.yml` is the yml file required to create the conda environment
-    - the folder `symbols` contains 4 CSV files:
-        - `GSCP.csv` contains the stock symbols for the S&P 500 Stock Index and the related stocks
-        - `NDX.csv` contains the stock symbols for the Nasdaq 100 Stock Index and the related stocks
-        - `RUT.csv` contains the stock symbols for the Russell 2000 Stock Index and the related stocks
-        - `index_symbols_bool.csv` is instead a file that is automatically created at the time of creation of the database and it stores all the stock symbols and a column for each stock index to mark the inclusion of each single stock symbol to one or more stock indices (this information is also stored in the database to avoid storing duplicate data if a stock is part of multiple indices)
-        - regarding the stock symbols I’ve written a note at the end of this readme document to give details about how I collected the various symbols
+- `typography.css` is a css file that contains some formatting for the Dash components of the 2 apps
+- the folder `assets` and the file `typography.css` must be kept in this position relative to the other files (notebook `bluecrest.ipynb` and python scripts `app1.py` and `app2.py`)
+- notebook `bluecrest.ipynb` contains the same python code that is split into the 3 python scripts `app1.py`, `app2.py` and `db_run.py` so that the apps can be run either, via the Jupyter Notebook or the *.py scripts via terminal
+- `environment.yml` is the yml file required to create the conda environment
+- the folder `symbols` contains 4 CSV files:
+    - `GSCP.csv` contains the stock symbols for the S&P 500 Stock Index and the related stocks
+    - `NDX.csv` contains the stock symbols for the Nasdaq 100 Stock Index and the related stocks
+    - `RUT.csv` contains the stock symbols for the Russell 2000 Stock Index and the related stocks
+    - `index_symbols_bool.csv` is instead a file that is automatically created at the time of creation of the database and it stores all the stock symbols and a column for each stock index to mark the inclusion of each single stock symbol to one or more stock indices (this information is also stored in the database to avoid storing duplicate data if a stock is part of multiple indices)
+    - regarding the stock symbols I’ve written a note at the end of this readme document to give details about how I collected the various symbols
 
 ## How to Create the Database and Run the 2 Apps
-- Once MongoDB is installed an the conda enviroment `py38_bluecrest` created, we can build the database and run the applications
+Once MongoDB is installed an the conda enviroment `py38_bluecrest` created, we can build the database and run the applications
 
 ### Database Creation
-1. We can create the database with either, the Jupyter Notebook `bluecrest.ipynb` or the `db_run.py` script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder `/symbols` as well as the database `stock_db` and collection `daily` in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
+We can create the database with either, the Jupyter Notebook `bluecrest.ipynb` or the `db_run.py` script. It must be noted that the first time the code is run (with one of the 2 possibilities, Jupyter Notebook or Python script), the file `index_symbols_bool.csv` gets created in the folder `/symbols` as well as the database `stock_db` and collection `daily` in MongoDB, as we can see from the screenshot below. In case we need to re-run the database creation, the `stocks_db` database must be deleted, meanwhile the CSV file will get overwritten.
 ![Alt text](https://github.com/SergioIommi/Quant-Trading-Dashboards/blob/main/readme-images/screenshot_db.png?raw=true)
-2. Jupyter Notebook
+#### Create Database with Jupyter Notebook
     1. change kernel to py38_bluecrest
     2. to create the database we can run the code in the cell below the one with title `Create/Update Database (MongoDB)` by first changing some relevant parameters (e.g., start date for the data to get from Yahoo Finance)
-3. Python Script (from terminal)
+#### Create Database with Python Script (from terminal)
     1. Another possibility is to run the script db_run.py  from terminal
     2. conda activate py38_bluecrest
     3. python db_run.py
@@ -99,8 +99,9 @@ In particular:
 2. Another possibility is to setup an automatic process to do that, as an example by using a cron job to run daily or even use celery (https://github.com/celery/celery). I have skipped this step.
 
 ### Running of the Apps
+We can run the apps with either, the Jupyter Notebook `bluecrest.ipynb` or the `app1.py`/`app2.py` Python scripts.
 
-#### Jupyter Notebook
+#### Run Apps with Jupyter Notebook
 1. Shut down Dash server on `127.0.0.1:8050` (e.g., shut down other kernels using Dash)
 2. change kernel to `py38_bluecrest`
 3. The 2 apps are stored under the cells:
@@ -108,7 +109,7 @@ In particular:
     2. Project-2: Multi-Variate Index Regression
 4. Once the code is executed the interactive GUI (built with Dash) should appear right below the executed cell
 
-#### Python Script (from terminal, to open the WebApp in a browser)
+#### Run Apps with Python Script (from terminal, to open the WebApp in a browser)
 1. Another possibility is to run the script `app1.py` (and `app2.py`) from terminal.
 2. Shut down Dash server on `127.0.0.1:8050` (e.g., shut down other kernels using Dash)
 3. from terminal move in the folder containing `app1.py`/`app2.py` python scripts
