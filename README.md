@@ -1,4 +1,4 @@
-# Programming Assessment <br/> Equities Pair Trading/Statistical Arbitrage and Multi-Variable Index Regression
+# <p style="text-align: center;">Programming Assessment <br/> Equities Pair Trading/Statistical Arbitrage and Multi-Variable Index Regression </p>
        
 ## Video Demonstration
 - https://www.youtube.com/watch?v=nKMXSsmpTvA
