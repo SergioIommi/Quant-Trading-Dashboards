@@ -1,4 +1,5 @@
 # Equities Pair Trading/Statistical Arbitrage and Multi-Variable Index Regression
+Small project to experiment with Plotly Dash and MongoDB (NoSQL database) by designing and building a full application to provide an interactive dashboard for traders to easily backtest equities pair trading/statistical arbitrage strategies on US single stocks (Nasdaq-100, S&P 500, Russell 2000) and investigate equity index vs single stock relationships.
        
 ## Video Demonstration
 - https://www.youtube.com/watch?v=nKMXSsmpTvA
